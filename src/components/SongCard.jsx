@@ -3,13 +3,18 @@ import { useDispatch } from "react-redux";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import PlayPause from "./PlayPause";
 
-const SongCard = ({ song, data, isPlaying, i }) => {
-  const activeSong = { title: "Yours" };
-  const handlePauseClick = () => {};
-  const handlePlayClick = () => {};
+const SongCard = ({ song, data, isPlaying, activeSong, i }) => {
+  const dispatch = useDispatch();
+  const handlePauseClick = () => {
+    dispatch(playPause(false));
+  };
+  const handlePlayClick = () => {
+    dispatch(setActiveSong({ song, i, data }));
+    dispatch(playPause(true));
+  };
 
   return (
-    <div className="flex flex-col w-[250px] p-4 bg-white/5  bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
+    <div className="select-none flex flex-col w-[250px] p-4 bg-white/10  bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
       <div className="relative w-full h-56 group ">
         <div
           className={`absolute inset-0 justify-center items-center rounded-lg bg-black bg-opacity-50 group-hover:flex ${
@@ -37,7 +42,7 @@ const SongCard = ({ song, data, isPlaying, i }) => {
         <p className="font-semibold text-lg text-white truncate">
           <Link> {song.title}</Link>
         </p>
-        <p className="text-sm text-gray-300 mt-1">
+        <p className="text-sm text-gray-900 mt-1">
           <Link
             to={
               song.artists
