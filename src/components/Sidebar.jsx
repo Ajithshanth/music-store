@@ -7,7 +7,7 @@ import { links } from "../assets/constants";
 import { HiOutlineMenu } from "react-icons/hi";
 
 const NavLinks = () => (
-  <div className="">
+  <div className="mt-4">
     {links.map((item) => (
       <NavLink
         onClick={() => handleClick && handleClick()}
@@ -27,7 +27,7 @@ const Sidebar = () => {
   return (
     <>
       <div className="select-none md:flex hidden flex-col w-[240px] py-10 px-4 bg-[#221746]">
-        <img src={logoN} alt="logo" className="w-full  object-contain" />
+        <img src={logoN} alt="logo" className="w-full mt-4 object-contain animate-[ping_10s_linear_infinite]" />
         <NavLinks />
       </div>
       <div className="select-none absolute md:hidden  block top-6 right-3 bg-[#221746]">

@@ -13,12 +13,12 @@ const Discover = () => {
   // if (error) return <Error />;
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col justify-between">
       <div className="w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10">
         <h2 className="font-bold text-3xl text-black text-left">
           Discover {genreTitle}
         </h2>
-        <select onChange={() => {}} value="" className="bg-black text-gray-300">
+        <select onChange={() => {}} value="" className="bg-black text-gray-300 rounded-md pb-2 pr-2 outline-none ">
           {genres.map((genre) => (
             <option key={genre.value} value={genre.value}>
               {genre.title}
@@ -27,7 +27,7 @@ const Discover = () => {
         </select>
       </div>
 
-      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+      <div className="flex flex-wrap  justify-center sm:justify-between gap-8">
         {data?.map((song, i) => (
           <SongCard
             key={song.key}

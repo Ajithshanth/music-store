@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /* Active Navigation Link */
+::-webkit-scrollbar {
+  display: none;
+}
 .active {
   @apply text-cyan-500;
 }
