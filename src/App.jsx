@@ -37,7 +37,7 @@ const App = () => {
               <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
           </div>
-          <div className="xl:sticky relative top-0 h-fit">
+          <div className="relative top-0 h-fit">
             <TopPlay />
           </div>
         </div>
@@ -58,10 +58,10 @@ const App = () => {
       {activeSong?.title && !playerOn && (
         <div
           onClick={() => handlePlayerOnOff()}
-          className="justify-center   text-3xl  cursor-pointer absolute bottom-0 left-0 right-0 flex  bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10"
+          className="justify-center text-lg cursor-pointer absolute bottom-0 left-0 right-0 flex  bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10"
         >
-          <div className="animate-bounce pt-2 "> 
-        
+          <div className="flex flex-col justify-center items-center animate-bounce pt-2 ">
+            <span>Open Player</span>
             <RiArrowUpCircleLine />
           </div>
         </div>
