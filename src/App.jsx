@@ -1,6 +1,5 @@
-import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
 import { Searchbar, Sidebar, MusicPlayer, TopPlay } from "./components";
 import {
   ArtistDetails,
@@ -11,10 +10,15 @@ import {
   SongDetails,
   TopCharts,
 } from "./pages";
+import { playerOnOff } from "./redux/features/playerSlice";
+import { RiArrowUpCircleLine } from "react-icons/ri";
 
 const App = () => {
   const { activeSong, playerOn } = useSelector((state) => state.player);
-
+  const dispatch = useDispatch();
+  const handlePlayerOnOff = () => {
+    dispatch(playerOnOff(true));
+  };
   return (
     <div className="relative flex">
       <Sidebar />
@@ -39,9 +43,27 @@ const App = () => {
         </div>
       </div>
 
-      {activeSong?.title &&  (
-        <div className={`${playerOn? 'absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10' : 'hidden'}`}>
+      {activeSong?.title && (
+        <div
+          className={`${
+            playerOn
+              ? "absolute h-28 bottom-0 left-0 right-0 flex bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10"
+              : "hidden"
+          }`}
+        >
           <MusicPlayer />
+        </div>
+      )}
+
+      {activeSong?.title && !playerOn && (
+        <div
+          onClick={() => handlePlayerOnOff()}
+          className="justify-center   text-3xl  cursor-pointer absolute bottom-0 left-0 right-0 flex  bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10"
+        >
+          <div className="animate-bounce pt-2 "> 
+        
+            <RiArrowUpCircleLine />
+          </div>
         </div>
       )}
     </div>
