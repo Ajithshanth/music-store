@@ -7,10 +7,10 @@ const Discover = () => {
   const dispatch = useDispatch();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const genreTitle = "Pop";
-  const data = songList;
-  // const { data, isFetching, error } = useGetTopChartsQuery();
-  // if (isFetching) return <Loader title="Loading Songs..." />;
-  // if (error) return <Error />;
+  //const data = songList;
+  const { data, isFetching, error } = useGetTopChartsQuery();
+  if (isFetching) return <Loader title="Loading Songs..." />;
+  if (error) return <Error />;
 
   return (
     <div className="flex flex-col justify-between">
@@ -18,7 +18,11 @@ const Discover = () => {
         <h2 className="font-bold text-3xl text-black text-left">
           Discover {genreTitle}
         </h2>
-        <select onChange={() => {}} value="" className="bg-black text-gray-300 rounded-md pb-2 pr-2 outline-none ">
+        <select
+          onChange={() => {}}
+          value=""
+          className="bg-black text-gray-300 rounded-md pb-2 pr-2 outline-none "
+        >
           {genres.map((genre) => (
             <option key={genre.value} value={genre.value}>
               {genre.title}
